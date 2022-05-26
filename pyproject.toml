@@ -7,6 +7,7 @@ authors = ["Wycliffe-Kim <f16o@hanyang.ac.kr>"]
 [tool.poetry.dependencies]
 python = "^3.10"
 pydash = "^5.1.0"
+toolz = "^0.11.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
