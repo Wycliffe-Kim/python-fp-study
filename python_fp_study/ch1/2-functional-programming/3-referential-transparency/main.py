@@ -1,24 +1,25 @@
-global count
-count = 0
+from functools import reduce
 
 
-def not_referential_transparent():
-    global count
-    count += 1
-    return count
+def sum(total: float, current: float):
+    return total + current
 
 
-def referential_transparent(count):
-    count += 1
-    return count
+def total(arr: list[float]):
+    return reduce(sum, arr, 0)
+
+
+def size(arr: list[float]):
+    return len(arr)
+
+
+def divide(a: float, b: float):
+    return a / b
+
+
+def average(arr: list[int]):
+    return divide(total(arr), size(arr))
 
 
 def main():
-    global count
-    print('before not_referential_transparent:', count)
-    count = not_referential_transparent()
-    print('after not_referential_transparent:', count)
-
-    print('before referential_transparent:', count)
-    count = referential_transparent(count)
-    print('after referential_transparent:', count)
+    print('referential transparent! Average is always', average([80, 90, 100]))
