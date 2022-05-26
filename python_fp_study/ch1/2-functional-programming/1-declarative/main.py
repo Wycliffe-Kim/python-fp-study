@@ -1,4 +1,4 @@
-from functions.map import map
+from ....functions.map import map
 
 
 def imperative_case():
@@ -7,7 +7,7 @@ def imperative_case():
     print('before:', array)
 
     for i in array:
-        array[i] = array[i] * 2
+        array[i] = array[i] ** 2
     print('after:', array)
 
 
@@ -18,3 +18,8 @@ def declarative_case():
 
     array = map(array, lambda x: x ** 2)
     print('after:', array)
+
+
+def main():
+    imperative_case()
+    declarative_case()

@@ -15,3 +15,7 @@ def fetch_data_from_db(api: str):
 def fetch_data_from_db(backend: Backend, api: str):
     data = backend.fetch(api)
     return data
+
+
+def main():
+    print('test')
