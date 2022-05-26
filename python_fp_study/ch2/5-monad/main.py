@@ -26,6 +26,10 @@ def twice(data: T):
     return data * 2
 
 
+def plus2(data: T):
+    return data + 2
+
+
 def log(title: str):
     def log_inner(data):
         print(f'{title}: {data}')
@@ -37,9 +41,9 @@ def log(title: str):
 def main():
     operation = (Monad[int].of(1)  # Monad(1)
                  .map(log('first phase'))
-                 .map(lambda d: d + 2)  # Monad(1 + 2)
+                 .map(plus2)  # Monad(1 + 2)
                  .map(log('second phase'))
-                 .map(lambda d: d * 2)   # Monad(3 * 2)
+                 .map(twice)   # Monad(3 * 2)
                  .map(log('last phase')))
 
     print('monad chain done with identity:', operation.done(identity))  # 6
