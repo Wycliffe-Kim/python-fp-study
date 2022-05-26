@@ -6,13 +6,13 @@ T = TypeVar('T')
 class Monad(Generic[T]):
     @staticmethod
     def of(value: T):
-        return Monad(value)
+        return Monad[T](value)
 
     def __init__(self, value: T):
         self.__data = value
 
     def map(self, f: Callable[[T], T]):
-        return Monad(f(self.__data))
+        return Monad[T](f(self.__data))
 
     def done(self, f: Callable[[T], T]):
         return f(self.__data)
@@ -35,7 +35,7 @@ def log(title: str):
 
 
 def main():
-    operation = (Monad.of(1)  # Monad(1)
+    operation = (Monad[int].of(1)  # Monad(1)
                  .map(log('first phase'))
                  .map(lambda d: d + 2)  # Monad(1 + 2)
                  .map(log('second phase'))
